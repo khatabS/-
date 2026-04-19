@@ -131,3 +131,16 @@
 
 </body>
 </html>
+
+<script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbzwpdKxnovUNP6jr9zTh_qD84UExPOmNF00mdPo4CzuQIhnid79XAU0o0-iPiY5AmdY/exec'
+  const form = document.forms['submit-to-google-sheet']
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    alert('جاري الإرسال... انتظر قليلاً')
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => alert('تم استلام ردك بنجاح! شكرًا لك.'))
+      .catch(error => console.error('Error!', error.message))
+  })
+</script>
