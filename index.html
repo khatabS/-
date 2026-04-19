@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>استبيان مادة تقنية المعلومات</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 700px;
+            background: #fff;
+            margin: auto;
+            padding: 30px;
+            border-top: 8px solid #2c3e50;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        h1 { color: #2c3e50; font-size: 24px; }
+        h2 { color: #7f8c8d; font-size: 18px; margin-top: -10px; }
+        
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; font-weight: bold; color: #34495e; }
+        
+        input[type="text"], input[type="email"], select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box; /* لضمان عدم خروج العناصر عن الحاوية */
+        }
+
+        .radio-group { display: flex; gap: 15px; flex-wrap: wrap; }
+        .radio-item { display: flex; align-items: center; gap: 5px; }
+
+        button {
+            background-color: #27ae60;
+            color: white;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 18px;
+            width: 100%;
+            transition: background 0.3s;
+        }
+        button:hover { background-color: #219150; }
+        
+        footer { text-align: center; margin-top: 20px; font-size: 12px; color: #95a5a6; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>مدرسة محمد بن سليمان الغافري</h1>
+        <h2>استبيان مادة تقنية المعلومات</h2>
+        <p>عزيزي الطالب، رأيك يساعدنا في تطوير مهاراتك التقنية.</p>
+    </header>
+
+    <form action="#" method="post">
+        <div class="form-group">
+            <label for="student-name">اسم الطالب (اختياري):</label>
+            <input type="text" id="student-name" name="student_name" placeholder="أدخل اسمك هنا">
+        </div>
+
+        <div class="form-group">
+            <label for="grade">الصف الدراسي:</label>
+            <select id="grade" name="grade" required>
+                <option value="">اختر الصف...</option>
+                <option value="5">الصف الخامس</option>
+                <option value="6">الصف السادس</option>
+                <option value="7">الصف السابع</option>
+                <option value="8">الصف الثامن</option>
+                <option value="9">الصف التاسع</option>
+                <option value="10">الصف العاشر</option>
+                <option value="11">الحادي عشر</option>
+                <option value="12">الثاني عشر</option>
+            </select>
+        </div>
+
+        <hr>
+
+        <div class="form-group">
+            <label>1. كيف تقيم وضوح الشرح في الحصة؟</label>
+            <div class="radio-group">
+                <span class="radio-item"><input type="radio" name="clarity" value="5"> ممتاز</span>
+                <span class="radio-item"><input type="radio" name="clarity" value="4"> جيد جداً</span>
+                <span class="radio-item"><input type="radio" name="clarity" value="3"> جيد</span>
+                <span class="radio-item"><input type="radio" name="clarity" value="2"> مقبول</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>2. مدى استفادتك من التطبيقات العملية في المختبر:</label>
+            <div class="radio-group">
+                <span class="radio-item"><input type="radio" name="practical" value="high"> كبيرة جداً</span>
+                <span class="radio-item"><input type="radio" name="practical" value="medium"> متوسطة</span>
+                <span class="radio-item"><input type="radio" name="practical" value="low"> قليلة</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="feedback">3. ما هي البرامج أو المهارات التقنية التي تود تعلمها أكثر؟</label>
+            <textarea id="feedback" name="feedback" rows="4" placeholder="مثلاً: البرمجة، التصميم، الذكاء الاصطناعي..."></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>4. هل تتوفر لك الأجهزة الكافية أثناء الحصة؟</label>
+            <div class="radio-group">
+                <span class="radio-item"><input type="radio" name="devices" value="yes"> نعم</span>
+                <span class="radio-item"><input type="radio" name="devices" value="no"> لا</span>
+            </div>
+        </div>
+
+        <button type="submit">إرسال الاستبيان</button>
+    </form>
+
+    <footer>
+        &copy; 2026 مدرسة محمد بن سليمان الغافري - قسم تقنية المعلومات
+    </footer>
+</div>
+
+</body>
+</html>
