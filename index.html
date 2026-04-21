@@ -9,6 +9,14 @@
   document.getElementById('surveyForm').addEventListener('submit', function(e) {
     e.preventDefault();
     // هنا يتم ربط الكود بـ Google Apps Script للارسال
-    alert("شكراً لمشاركتك المجهولة في مادة تقنية المعلومات");
+   const formData = new FormData(this);
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbw5SKMi_giEsfXm51c8-1Ky-zxE7RTXojPqhb3UzRI7Wl6PaVWrDjKBEIgosGLIGxnT/exec';
+
+    fetch(scriptURL, { method: 'POST', body: formData})
+        .then(response => {
+            alert("شكراً لمشاركتك المجهولة في مادة تقنية المعلومات");
+            this.reset(); // لتفريغ الخيارات بعد الإرسال
+        })
+        .catch(error => console.error('Error!', error.message));
   });
 </script>
