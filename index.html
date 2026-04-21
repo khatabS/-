@@ -10,7 +10,7 @@
     e.preventDefault();
     // هنا يتم ربط الكود بـ Google Apps Script للارسال
    const formData = new FormData(this);
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbw5SKMi_giEsfXm51c8-1Ky-zxE7RTXojPqhb3UzRI7Wl6PaVWrDjKBEIgosGLIGxnT/exec';
+    const scriptURL = 'https://script.google.com/macros/s/AKfycby5TgAlerEk1eKGGKjibDNW1Gfw08rL8vMqPb942taeGAqGaWcbw7wSAj4D1frdPqMs/exec';
 
     fetch(scriptURL, { method: 'POST', body: formData})
         .then(response => {
