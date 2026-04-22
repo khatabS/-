@@ -7,8 +7,8 @@
     <style>
         :root {
             --primary-color: #2c3e50;
-            --accent-color: #3498db;
-            --bg-color: #f4f7f6;
+            --accent-color: #27ae60; /* تغيير اللون للأخضر ليعطي انطباعاً إيجابياً */
+            --bg-color: #f0f4f8;
         }
 
         body {
@@ -24,64 +24,61 @@
             background: white;
             padding: 30px;
             border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             width: 100%;
-            max-width: 500px;
+            max-width: 550px;
             text-align: center;
         }
 
-        header h1 { color: var(--primary-color); font-size: 1.5rem; }
-        header p { color: #666; margin-bottom: 30px; }
+        header h1 { color: var(--primary-color); font-size: 1.4rem; margin-bottom: 5px; }
+        header h2 { color: #7f8c8d; font-size: 1.1rem; margin-top: 0; }
+        .info-text { color: #666; font-size: 0.9rem; margin-bottom: 25px; }
 
-        .rating-box { margin: 20px 0; }
-        
+        .form-group { text-align: right; margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; color: #34495e; }
+
+        input[type="text"], select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-family: inherit;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--accent-color);
+            outline: none;
+        }
+
         /* نظام النجوم */
         .stars {
             display: flex;
             flex-direction: row-reverse;
             justify-content: center;
             gap: 10px;
+            margin: 15px 0;
         }
 
         .stars input { display: none; }
-
-        .stars label {
-            font-size: 40px;
-            color: #ddd;
-            cursor: pointer;
-            transition: color 0.2s;
-        }
-
-        .stars input:checked ~ label,
-        .stars label:hover,
-        .stars label:hover ~ label {
-            color: #f1c40f;
-        }
-
-        select, textarea {
-            width: 100%;
-            padding: 12px;
-            margin: 10px 0;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-family: inherit;
-            box-sizing: border-box;
-        }
+        .stars label { font-size: 35px; color: #ddd; cursor: pointer; }
+        .stars input:checked ~ label, .stars label:hover, .stars label:hover ~ label { color: #f1c40f; }
 
         button {
             background-color: var(--accent-color);
             color: white;
             border: none;
-            padding: 12px 30px;
+            padding: 15px 40px;
             border-radius: 8px;
             cursor: pointer;
-            font-size: 1rem;
-            transition: background 0.3s;
+            font-size: 1.1rem;
+            width: 100%;
+            font-weight: bold;
         }
 
-        button:hover { background-color: #2980b9; }
-
-        #message { margin-top: 20px; font-weight: bold; color: #27ae60; }
+        #message { margin-top: 20px; padding: 10px; border-radius: 5px; display: none; }
+        .success { background-color: #d4edda; color: #155724; display: block !important; }
     </style>
 </head>
 <body>
@@ -90,51 +87,82 @@
     <header>
         <h2>مدرسة محمد بن سليمان الغافري</h2>
         <h1>تقييم مادة تقنية المعلومات</h1>
-        <p>رأيك يهمنا لتطوير المادة (التقييم مجهول الهوية)</p>
+        <p class="info-text">مساهمتكم تساعدنا في تطوير مهاراتكم التقنية</p>
     </header>
 
     <form id="evaluationForm">
-        <label for="topic">اختر الموضوع المراد تقييمه:</label>
-        <select id="topic" required>
-            <option value="">-- اختر الدرس/المشروع --</option>
-            <option value="programming">البرمجة بلغة بايثون</option>
-            <option value="web-design">تصميم المواقع</option>
-            <option value="robotics">الروبوت والذكاء الاصطناعي</option>
-            <option value="security">الأمن السيبراني</option>
-        </select>
+        <div class="form-group">
+            <label for="studentName">اسم الطالب (اختياري):</label>
+            <input type="text" id="studentName" placeholder="اتركه فارغاً إذا كنت تفضل الخصوصية">
+        </div>
 
-        <div class="rating-box">
-            <p>ما هو تقييمك العام؟</p>
+        <div class="form-group">
+            <label for="topic">الموضوع أو الدرس:</label>
+            <select id="topic" required>
+                <option value="">-- اختر ما تريد تقييمه --</option>
+                <option value="البرمجة">البرمجة</option>
+                <option value="الذكاء الاصطناعي">الذكاء الاصطناعي</option>
+                <option value="الشبكات">الشبكات والأمن</option>
+                <option value="أخرى">ملاحظة عامة عن المادة</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>التقييم:</label>
             <div class="stars">
                 <input type="radio" name="star" id="star5" value="5"><label for="star5">★</label>
                 <input type="radio" name="star" id="star4" value="4"><label for="star4">★</label>
                 <input type="radio" name="star" id="star3" value="3"><label for="star3">★</label>
                 <input type="radio" name="star" id="star2" value="2"><label for="star2">★</label>
                 <input type="radio" name="star" id="star1" value="1"><label for="star1">★</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="comment">رأيك أو مقترحاتك:</label>
+            <textarea id="comment" rows="3" placeholder="اكتب رأيك هنا..."></textarea>
+        </div>
+
+        <button type="submit" id="submitBtn">إرسال التقييم</button>
+    </form>
+
+    <div id="message"></div>
+</div>
 
 <script>
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbwq1ek70aHRMy3aqXxzwZcmFs0K7qMJCLc6H2pWcoZApVicKsXbZ1AKx7HGpN2cL7df/exec'; 
+    const scriptURL = 'ضع_رابط_الـ_APPS_SCRIPT_هنا';
     const form = document.getElementById('evaluationForm');
     const msg = document.getElementById('message');
 
     form.addEventListener('submit', e => {
         e.preventDefault();
-        msg.innerText = "جاري إرسال تقييمك...";
+        const btn = document.getElementById('submitBtn');
+        btn.disabled = true;
+        btn.innerText = "جاري الإرسال...";
 
-        // تجهيز البيانات للإرسال
         const formData = new FormData();
+        // إذا كان الاسم فارغاً، سنرسل كلمة "مجهول"
+        const nameValue = document.getElementById('studentName').value.trim();
+        formData.append('studentName', nameValue || "مجهول");
         formData.append('topic', document.getElementById('topic').value);
-        formData.append('rating', document.querySelector('input[name="star"]:checked').value);
+        formData.append('rating', document.querySelector('input[name="star"]:checked')?.value || "0");
         formData.append('comment', document.getElementById('comment').value);
 
         fetch(scriptURL, { method: 'POST', body: formData})
             .then(response => {
-                msg.innerText = "شكراً لك! تم استلام تقييمك في مدرسة محمد بن سليمان الغافري.";
+                msg.innerText = "شكراً لك! تم استلام تقييمك بنجاح.";
+                msg.className = "success";
                 form.reset();
+                btn.disabled = false;
+                btn.innerText = "إرسال تقييم آخر";
             })
             .catch(error => {
-                msg.innerText = "عذراً، حدث خطأ أثناء الإرسال. حاول مرة أخرى.";
-                console.error('Error!', error.message);
+                msg.innerText = "حدث خطأ، يرجى المحاولة لاحقاً.";
+                btn.disabled = false;
+                btn.innerText = "إرسال التقييم";
             });
     });
 </script>
+
+</body>
+</html>
